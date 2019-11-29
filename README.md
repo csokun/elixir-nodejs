@@ -24,3 +24,22 @@ alias elixirc='docker run -it ${ELIXIR_VOLUMES} -v ${PWD}:/src --rm --network=ho
 alias mix='docker run -it ${ELIXIR_VOLUMES} -v ${PWD}:/src --rm --network=host ${ELIXIR_IMAGE} mix'
 alias elc='echo "removing .mix and .hex directories" && rm -rf ${ELIXIRROOT}/.mix && rm -rf ${ELIXIRROOT}/.hex'
 ```
+Reload your bash `source ~/.bashrc` and install hex packages.
+
+```bash
+mix local.hex
+mix archive.install hex phx_new 1.4.11
+```
+
+Nice done! you now ready to hack crack Phoenix.
+
+## Hello World
+
+```bash
+mkdir phoenix
+cd phoenix
+mix phx.new helloworld --no-ecto
+mix phx.server
+```
+
+Visit: http://localhost:4000 to checkout your Phoenix hello world app.
