@@ -62,7 +62,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " CtrlP - https://github.com/ctrlpvim/ctrlp.vim
-let g:ctrlp_root_markers = ['package.json']
+let g:ctrlp_root_markers = ['package.json', 'mix.exs']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " NERDTree
@@ -73,7 +73,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close vim if the onl window left option is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden  = 1
-let NERDTreeIgnore      = ['.git$[[dir]]', '.swp', 'node_modules', '\.png$', '\.jpg$']
+let NERDTreeIgnore      = ['.git$[[dir]]', '.swp', '.elixir_ls', 'node_modules', '\.png$', '\.jpg$']
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
