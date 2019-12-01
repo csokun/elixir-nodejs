@@ -35,6 +35,7 @@ RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
 
 # git prompt
 COPY bin/studio /usr/local/bin/studio
+COPY .bashrc /root/.bashrc
 RUN curl -sL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o /root/.git-prompt.sh && \
     chmod +x /root/.git-prompt.sh && \
     chmod +x /usr/local/bin/studio

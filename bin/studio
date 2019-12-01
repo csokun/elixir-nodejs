@@ -1,5 +1,2 @@
 #!/usr/bin/env bash
-source /root/.git-prompt.sh
-export TERM=xterm-256color
-export PS1='\[\e[32m\]\u\[\e[m\]\[\e[35m\]@\h\[\e[m\]:\w$(__git_ps1 " (%s)")\n $ '
 tmux new-session \; split-window -h -p 20 \; split-window -v \; attach
