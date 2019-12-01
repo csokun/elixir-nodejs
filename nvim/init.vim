@@ -103,6 +103,13 @@ colorscheme jellybeans
 hi NonText ctermbg=none 
 hi Normal guibg=NONE ctermbg=NONE
 
+" mouse settings
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
+
 " elixir
 let g:mix_format_on_save = 1
 
