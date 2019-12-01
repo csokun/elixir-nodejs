@@ -28,7 +28,10 @@ RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
     # install Plug
     curl -fLo /root/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     nvim +PlugInstall +qall && \
-    nvim -c 'CocInstall -sync coc-elixir coc-json coc-html coc-emmet coc-tsserver|q'
+    nvim -c 'CocInstall -sync coc-elixir coc-json coc-html coc-emmet coc-tsserver|q' && \
+    # neovim alias
+    ln -s /usr/local/bin/nvim /usr/local/bin/vim && \
+    ln -s /usr/local/bin/nvim /usr/local/bin/vi
 
 WORKDIR /src
 
