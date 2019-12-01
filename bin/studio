@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-tmux new-session \; split-window -h -p 20 \; split-window -v \; attach
+tmux new-session -d 'vim'
+tmux split-window -v -p 20
+tmux split-window -h -p 50 'htop'
+tmux -2 attach -d

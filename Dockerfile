@@ -1,7 +1,7 @@
 FROM elixir:1.9.4
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install tmux git curl gcc g++ make inotify-tools ca-certificates -y --no-install-recommends \
+RUN apt-get update && apt-get install tmux htop git curl gcc g++ make inotify-tools ca-certificates -y --no-install-recommends \
     # config nodejs source
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     # configure yarn source
