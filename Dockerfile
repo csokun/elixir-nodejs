@@ -33,6 +33,12 @@ RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
     ln -s /usr/local/bin/nvim /usr/local/bin/vim && \
     ln -s /usr/local/bin/nvim /usr/local/bin/vi
 
+# git prompt
+COPY bin/studio /usr/local/bin/studio
+RUN curl -sL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o /root/.git-prompt.sh && \
+    chmod +x /root/.git-prompt.sh && \
+    chmod +x /usr/local/bin/studio
+
 WORKDIR /src
 
 CMD ["iex"]
