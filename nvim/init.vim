@@ -73,7 +73,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close vim if the onl window left option is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden  = 1
-let NERDTreeIgnore      = ['.git$[[dir]]', '.swp', '.elixir_ls', 'node_modules', '\.png$', '\.jpg$']
+let NERDTreeIgnore      = ['.git$[[dir]]', '.swp', 'mix.lock', '_build', 'deps', '.elixir_ls', 'node_modules', '\.png$', '\.jpg$']
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
