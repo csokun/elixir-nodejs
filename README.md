@@ -51,5 +51,18 @@ cd phoenix/helloworld
 iexstudio
 ```
 
+## Live Troubleshoot
 
-New to Elixir recommend [video](https://www.youtube.com/watch?v=JvBT4XBdoUE) and grab demo code [here](https://github.com/sasa1977/demo_system.git).
+Grab demo code and watch this [https://www.youtube.com/watch?v=JvBT4XBdoUE](https://www.youtube.com/watch?v=JvBT4XBdoUE) 
+
+```bash
+git clone https://github.com/sasa1977/demo_system.git
+cd demo_system/example_sytem
+# build
+mix deps.get && pushd assets && npm install && pods && mix compile
+# start the app
+iex --name app@127.0.0.1 -S mix phx.server
+# start new console - remote shell to app
+iex --name console@127.0.0.1 --remsh app@127.0.0.1
+# congrat!!! now watch the clip & start your elixir hacking journey 
+```
