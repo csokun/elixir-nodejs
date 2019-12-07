@@ -50,3 +50,6 @@ Visit: http://localhost:4000 to checkout your Phoenix hello world app.
 cd phoenix/helloworld
 iexstudio
 ```
+
+
+New to Elixir recommend [video](https://www.youtube.com/watch?v=JvBT4XBdoUE) and grab demo code [here](https://github.com/sasa1977/demo_system.git).
