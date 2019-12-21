@@ -16,7 +16,7 @@ alias l='ls $LS_OPTIONS -lA'
 # alias rm='rm -i'
 # alias cp='cp -i'
 # alias mv='mv -i'
-source /root/.git-prompt.sh
+source ~/.git-prompt.sh
 TERM=xterm-256color
 PS1='\[\e[32m\]\u\[\e[m\]\[\e[35m\]@\h\[\e[m\]:\w$(__git_ps1 " (%s)")\n $ '
 
