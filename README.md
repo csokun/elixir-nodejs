@@ -12,8 +12,8 @@ export ELIXIRROOT="$HOME/elixir"
 if [ ! -d "$ELIXIRROOT" ]; then
     mkdir -p $ELIXIRROOT
 fi
-export MIXPATH="/root/.mix"
-export HEXPATH="/root/.hex"
+export MIXPATH="/home/elixir/.mix"
+export HEXPATH="/home/elixir/.hex"
 export ELIXIR_VOLUMES="-v ${ELIXIRROOT}/.mix:${MIXPATH} -v ${ELIXIRROOT}/.hex:${HEXPATH} --workdir /src"
 export ELIXIR_IMAGE="csokun/elixir-studio"
 alias iex='docker run -it ${ELIXIR_VOLUMES} -v ${PWD}:/src --rm --network=host ${ELIXIR_IMAGE}'
