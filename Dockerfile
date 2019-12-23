@@ -5,7 +5,7 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV TERM xterm-256color
 
-RUN apt-get update && apt-get install tmux htop git curl gcc g++ make inotify-tools ca-certificates -y --no-install-recommends \
+RUN apt-get update && apt-get install tmux ripgrep git curl gcc g++ make inotify-tools ca-certificates -y --no-install-recommends \
     # config nodejs source
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     # configure yarn source
@@ -50,10 +50,12 @@ RUN curl -sL https://raw.githubusercontent.com/git/git/master/contrib/completion
     chmod +x $HOME/.git-prompt.sh && \
     chmod +x /usr/local/bin/studio
 
+WORKDIR /src
+
 # switch user
-RUN chown -R elixir $HOME && echo "source ~/.bashrc" >> $HOME/.bash_profile
+RUN chown -R elixir $HOME /src \
+    && echo "source ~/.bashrc" >> $HOME/.bash_profile
 USER elixir
 
-WORKDIR /src
 
 CMD ["iex"]
