@@ -1,4 +1,4 @@
-FROM elixir:1.9.4
+FROM elixir:1.10.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
