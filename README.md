@@ -8,14 +8,14 @@ Add the following lines to your `~/.bashrc`
 
 ```bash
 # setup Elixir aliases
-export ELIXIRROOT="$HOME/elixir"
-if [ ! -d "$ELIXIRROOT" ]; then
-    mkdir -p $ELIXIRROOT
-fi
-export MIXPATH="/home/elixir/.mix"
-export HEXPATH="/home/elixir/.hex"
-export ELIXIR_VOLUMES="-v ${ELIXIRROOT}/.mix:${MIXPATH} -v ${ELIXIRROOT}/.hex:${HEXPATH} --workdir /src"
 export ELIXIR_IMAGE="csokun/elixir-studio"
+export ELIXIR_HOST_ROOT="$HOME/elixir"
+if [ ! -d "$ELIXIR_HOST_ROOT" ]; then
+    mkdir -p $ELIXIR_HOST_ROOT/.mix $ELIXIR_HOST_ROOT/.hex
+fi
+export ELIXIR_CONTAINER_ROOT="/home/elixir"
+export ELIXIR_VOLUMES="-v ${ELIXIR_HOST_ROOT}:${ELIXIR_CONTAINER_ROOT} --workdir /src"
+
 alias iex='docker run -it ${ELIXIR_VOLUMES} -e DISPLAY=$DISPLAY -v ${PWD}:/src --rm --network=host ${ELIXIR_IMAGE}'
 alias iexm='docker run -it ${ELIXIR_VOLUMES} -v ${PWD}:/src --rm --network=host ${ELIXIR_IMAGE} iex -S mix'
 alias elixir='docker run -it ${ELIXIR_VOLUMES} -v ${PWD}:/src --rm --network=host ${ELIXIR_IMAGE} elixir'
