@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-tmux new-session -d 'vim'
+sn=studio
+
+tmux new-session -s "$sn" -n "code" -d "vim"
 tmux split-window -v -p 20
-tmux split-window -h -p 50 'iex -S mix'
-tmux -2 attach -d
+tmux new-window -t "$sn:2" -n "mixr"
+tmux split-window -h -p 50
+tmux new-window -t "$sn:3" -n "iex" -d "iex -S mix"
+
+# Select window #1 and attach to the session
+tmux select-window -t "$sn:1"
+tmux -2 attach-session -t "$sn"
