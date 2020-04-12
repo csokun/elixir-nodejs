@@ -57,5 +57,4 @@ RUN chown -R elixir $HOME /src \
     && echo "source ~/.bashrc" >> $HOME/.bash_profile
 USER elixir
 
-
 CMD ["iex"]
