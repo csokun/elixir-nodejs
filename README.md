@@ -31,6 +31,13 @@ mix local.hex
 mix archive.install hex phx_new 1.4.15
 ```
 
+Upgrade [phoenix-1.5.x](https://elixirforum.com/t/phoenix-1-5-0-rc-0-released/30693):
+
+```bash
+mix archive.uninstall phx_new
+mix archive.install hex phx_new 1.5.0-rc.0
+```
+
 Nice done! you now ready to hack crack Phoenix.
 
 ## Hello World
