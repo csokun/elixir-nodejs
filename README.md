@@ -11,7 +11,7 @@ Add the following lines to your `~/.bashrc`
 export ELIXIR_IMAGE="csokun/elixir-studio:latest"
 export ELIXIR_HOST_ROOT="$HOME/elixir"
 if [ ! -d "$ELIXIR_HOST_ROOT" ]; then
-    mkdir -p $ELIXIR_HOST_ROOT/.mix $ELIXIR_HOST_ROOT/.hex
+    mkdir -p $ELIXIR_HOST_ROOT/.mix $ELIXIR_HOST_ROOT/.hex $ELIXIR_HOST_ROOT/nvim/.config/coc/extensions
 fi
 export ELIXIR_CONTAINER_ROOT="/home/elixir"
 export ELIXIR_VOLUMES="-v ${ELIXIR_HOST_ROOT}/.mix:${ELIXIR_CONTAINER_ROOT}/.mix -v ${ELIXIR_HOST_ROOT}/.hex:${ELIXIR_CONTAINER_ROOT}/.hex --mount type=bind,source=${HOME}/.gitconfig,target=${ELIXIR_CONTAINER_ROOT}/.gitconfig,readonly --workdir /src"

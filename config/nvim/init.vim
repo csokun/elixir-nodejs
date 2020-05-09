@@ -68,6 +68,7 @@ nnoremap <C-l> <C-w>l
 " CtrlP - https://github.com/ctrlpvim/ctrlp.vim
 nnoremap <C-b> :CtrlPBuffer<CR>
 let g:ctrlp_root_markers = ['package.json', 'mix.exs']
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 if executable('rg')
   let g:ctrlp_user_command = ['.git', 'rg %s --files --hidden --color=never --glob "" && git ls-files -co --exclude-standard']
 endif

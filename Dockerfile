@@ -3,7 +3,7 @@ FROM elixir:1.10
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV TERM screen-256color
+ENV TERM xterm-256color
 
 RUN apt-get update && apt-get install tmux ripgrep git curl gcc g++ make python3-pip python3-setuptools inotify-tools ca-certificates -y --no-install-recommends \
     # config nodejs source
@@ -37,9 +37,10 @@ RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
     cp -a nvim-linux64/* /usr/local/ && \
     rm -rf /tmp/* && \
     # install Plug
-    curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
+    curl -sfLo $HOME/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     nvim +PlugInstall +qall && \
-    nvim -c 'CocInstall -sync coc-elixir coc-snippets coc-json coc-html coc-emmet coc-tsserver|q' && \
+    cd $HOME/.config/coc/extensions && \
+    chmod +x install.sh && ./install.sh && \
     # neovim alias
     ln -s /usr/local/bin/nvim /usr/local/bin/vim && \
     ln -s /usr/local/bin/nvim /usr/local/bin/vi
