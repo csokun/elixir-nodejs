@@ -65,12 +65,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+set wildignore+=*/.git/*,*/tmp/*,*.swp
+
 " CtrlP - https://github.com/ctrlpvim/ctrlp.vim
 nnoremap <C-b> :CtrlPBuffer<CR>
-let g:ctrlp_root_markers = ['package.json', 'mix.exs']
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 if executable('rg')
-  let g:ctrlp_user_command = ['.git', 'rg %s --files --hidden --color=never --glob "" && git ls-files -co --exclude-standard']
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
 endif
 
 " NERDTree
