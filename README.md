@@ -28,14 +28,7 @@ Reload your bash `source ~/.bashrc` and install hex packages.
 
 ```bash
 mix local.hex
-mix archive.install hex phx_new 1.4.15
-```
-
-Upgrade [phoenix 1.4.0 to 1.5.x](https://gist.github.com/chrismccord/e53e79ef8b34adf5d8122a47db44d22f):
-
-```bash
-mix archive.uninstall phx_new
-mix archive.install hex phx_new 1.5.0-rc.0
+mix archive.install hex phx_new 1.5.1
 ```
 
 Nice done! you now ready to hack crack Phoenix.

@@ -1,0 +1,29 @@
+1 # A valid snippet should starts with:                                                                                                                                              
+2 #                                                                                     
+3 #   snippet trigger_word [ "description" [ options ] ]                                
+4 #                                              
+5 # and end with:                                              
+6 #                                                   
+7 #   endsnippet                                    
+8 #                                                 
+9 # Snippet options:                                        
+10 #                                                         
+11 #   b - Beginning of line.                                   
+12 #   i - In-word expansion.                                                       
+13 #   w - Word boundary.                                                
+14 #   r - Regular expression                                                                              
+15 #   e - Custom context snippet                                                                          
+16 #   A - Snippet will be triggered automatically, when condition matches.                                
+17 #                                                              
+18 # Basic example:                                                                                         
+19 #                                                                            
+20 #   snippet emitter "emitter properties" b                                                    
+21 #   private readonly ${1} = new Emitter<$2>()                                                 
+22 #   public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event                                
+23 #   endsnippet                                                                                                       
+24 #                                                                                                                    
+25 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet emitter "emitter properties" b                                                    
+private readonly ${1} = new Emitter<$2>()                                                 
+public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event                                
+endsnippet    

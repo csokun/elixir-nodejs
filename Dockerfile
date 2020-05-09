@@ -3,9 +3,9 @@ FROM elixir:1.10
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV TERM xterm-256color
+ENV TERM screen-256color
 
-RUN apt-get update && apt-get install tmux ripgrep git curl gcc g++ make inotify-tools ca-certificates -y --no-install-recommends \
+RUN apt-get update && apt-get install tmux ripgrep git curl gcc g++ make python3-pip python3-setuptools inotify-tools ca-certificates -y --no-install-recommends \
     # config nodejs source
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     # configure yarn source
@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install tmux ripgrep git curl gcc g++ make inotify
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     # install nodejs & yarn
     && apt-get update && apt-get install nodejs yarn -y --no-install-recommends \
+    && pip3 install wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 1000 elixir && \
@@ -30,7 +31,7 @@ RUN git clone https://github.com/elixir-lsp/elixir-ls.git $HOME/.elixir-ls && \
     mix deps.get && mix compile && mix elixir_ls.release -o release
 
 # neovim
-COPY nvim/* $HOME/.config/nvim/
+COPY config/ $HOME/.config/
 ADD https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz /tmp/
 RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
     cp -a nvim-linux64/* /usr/local/ && \
@@ -38,7 +39,7 @@ RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
     # install Plug
     curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     nvim +PlugInstall +qall && \
-    nvim -c 'CocInstall -sync coc-elixir coc-json coc-html coc-emmet coc-tsserver|q' && \
+    nvim -c 'CocInstall -sync coc-elixir coc-snippets coc-json coc-html coc-emmet coc-tsserver|q' && \
     # neovim alias
     ln -s /usr/local/bin/nvim /usr/local/bin/vim && \
     ln -s /usr/local/bin/nvim /usr/local/bin/vi
@@ -55,6 +56,9 @@ WORKDIR /src
 # switch user
 RUN chown -R elixir $HOME /src \
     && echo "source ~/.bashrc" >> $HOME/.bash_profile
+
 USER elixir
+RUN yarn global add neovim && \
+    pip3 install --user neovim
 
 CMD ["iex"]
