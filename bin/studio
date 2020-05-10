@@ -2,9 +2,7 @@
 sn=studio
 
 tmux new-session -s "$sn" -n "code" -d "vim"
-tmux split-window -v -p 20
-tmux new-window -t "$sn:2" -n "mixr"
-tmux split-window -h -p 50
+tmux new-window -t "$sn:2" -n "term"
 
 MIXFILE="$PWD/mix.exs"
 if [ -f "$MIXFILE" ]; then
