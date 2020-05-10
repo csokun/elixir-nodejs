@@ -32,7 +32,8 @@ RUN git clone https://github.com/elixir-lsp/elixir-ls.git $HOME/.elixir-ls && \
 
 # neovim
 COPY config/ $HOME/.config/
-ADD https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz /tmp/
+# ADD https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz /tmp/
+ADD https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz /tmp/
 RUN cd /tmp && tar -xf nvim-linux64.tar.gz && \
     cp -a nvim-linux64/* /usr/local/ && \
     rm -rf /tmp/* && \
